@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <link rel="stylesheet"  href="Admin/bootstrap/css/superhero.min.css">
+         <link rel="stylesheet"  href="Admin/font-awesome-4.3.0/css/font-awesome.min.css">
+         <link rel="stylesheet"  href="Admin/date/css/bootstrap-datetimepicker.min.css">
+         <link rel="stylesheet"  href="Admin/chosen/chosen.bootstrap.min.css">
+         <link rel="stylesheet" href="Admin/datatables/dataTables.bootstrap.css">
+         <link rel="stylesheet" type="text/css" href="css/main.css">
+         <link rel="stylesheet" type="text/css" href="css/style_chat.css">
+        <script type="text/javascript" src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+        <link rel="icon" type="image/x-icon" href="#" />
+    </head>
+    <body>
+	<div style="width:100% height:80px; backgroud:#000"></div>
+            
+    <script src="Admin/bootstrap/js/jQuery-2.1.4.min.js"></script>
+    <script src="Admin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Admin/datatables/jquery.dataTables.min.js"></script>
+    <script src="Admin/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="Admin/date/min/moment.min.js"></script>
+    <script src="Admin/date/min/locales.min.js"></script>
+    <script src="Admin/date/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="Admin/chosen/chosen.jquery.min.js"></script>
+    <script src="Admin/chosen/bootstrap-filestyle.js"></script> 
+   
+<!--///////////////////////////////////////////////////////-->  
+  <style type="text/css" >
+  #messageFormArea{
+    display: none;
+  }
+
+    .popup-messages  textarea
+            {
+                width: 95%;
+                margin-bottom:-245px; 
+                position: absolute;
+                top:87%;
+            }
+
+</style>
+
+
+
+        <script type="text/javascript">
+function connect () {
+  //alert('s');
+  var socket=io.connect('http://127.0.0.1:3000/');
+}
+
+</script>
+
+
+      <nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+           
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+             <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button> <a class="navbar-brand" href="#">TN.Vido.CONF</a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="#"> <i class="fa fa-headphones" aria-hidden="true"></i></a>
+            </li>
+        
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-camera" aria-hidden="true"></i> Webcam<strong class="caret"></strong></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Webcam 1</a>
+                </li>
+                <li>
+                  <a href="#">Webcam 2</a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                  <a href="#">fermé</a>
+                </li>
+            
+              </ul>
+            </li>
+          </ul>
+        
+          <ul class="nav navbar-nav navbar-right">
+            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span></a>
+          
+            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <li>
+              <a href="#"></a>
+            </li>
+          </ul>
+        </div>
+        
+      </nav>
+
+<br><br><br>
+
+ <div id="userFormArea" >
+          <form id="userForm">
+              <div class="form-group">
+                <label>entrer user</label>
+                <input class="form-control" id="username"/>
+                <input type="submit" class="btn btn-primary" value="login" />
+
+              </div>
+
+            </form>
+
+
+</div>
+
+<div class="container-fluid" id="messageFormArea" >
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-3">
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                <input id="hidden" type="hidden" value=""/>
+                  <h3 class="panel-title">Utilisateurs</h3>
+                </div>
+                <div class="panel-body">
+
+
+                
+
+                  <table class="table table-hover table-condensed">
+                      <thead>
+                          <tr>
+                              <th>Statut</th>
+                              <th>Nom</th>
+                              <th>Média</th>
+                           
+                          </tr>
+                      </thead>
+                      <tbody class="list-group" id="chat-list">
+                      
+                      <tr><td><a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-user"></span></a></td><td>dali</td><td><i class="fa fa-camera" aria-hidden="true"></i></td></tr>
+                      </tbody>
+
+
+                  </table>
+
+
+                 
+                </div>
+              </div>
+
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel success</h3>
+                </div>
+                <div class="panel-body">
+                  
+
+                </div>
+              </div>
+
+
+        </div>
+        <div class="col-md-6">
+
+
+
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel success</h3>
+                </div>
+                <div class="panel-body Will">
+                         <div id="toolbar">
+                              <div id="rad">
+                                <span id="radval">10</span>
+                            <div id="decrad" class="radcontrol">-</div>
+                            <div id="incrad" class="radcontrol">+</div>
+
+                              </div>
+                            
+                            <div id="colors">
+                              <div class="swatch active" style="background-color:red;"></div>
+                              <div class="swatch" style="background-color:pink;"></div>
+                              <div class="swatch" style="background-color:green;"></div>
+                              <div class="swatch" style="background-color:yellow;"></div>
+                              <div class="swatch" style="background-color:blue;"></div>
+
+                            </div>
+                            <div id="save">save</div>
+                          </div>
+                          <canvas id="canvas" width="100" height="50"></canvas>
+                              <script type="text/javascript" id="script" src="js/main.js"></script>
+
+                                <script type="text/javascript" id="radius" src="js/radius.js"></script>
+                                <script type="text/javascript" id="colors" src="js/colors.js"></script>
+              
+                </div>
+              </div>
+
+
+
+        </div>
+        <div class="col-md-3">
+
+
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel title</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="chat" id="chat"></div>
+                    <form id="messageForm">
+                      <div class="form-group">
+                        <label>entrer message</label>
+                        <textarea class="form-control" id="message"></textarea>
+                        <input type="submit" class="btn btn-primary" value="send" />
+
+                      </div>
+
+                    </form>
+                </div>
+              </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+     <!--
+          <nav class="navbar navbar-default navbar-fixed-bottom " role="navigation">
+            <div class="navbar-header">
+               
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+              </button> <a class="navbar-brand" href="#">(c) 2016 BigBlueButton Inc. (build 417)</a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+             
+
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="#"></a>
+                </li>
+
+              <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                      <select class="form-control">
+                          <option>fn</option>
+                          <option>an</option>
+                          <option>es</option>
+                          <option>it</option>
+                          <option>ar</option>
+                        </select>
+
+
+                   <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-file"></span></a>
+    
+                        <select class="form-control">
+                          <option>config</option>
+                          <option>an</option>
+                          <option>es</option>
+                          <option>it</option>
+                          <option>ar</option>
+                        </select>
+                   <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-link"></span></a>
+                </div> 
+                
+              </form>
+             
+                &nbsp;&nbsp;&nbsp;&nbsp;
+  
+              </ul>
+            </div>
+            
+          </nav>
+ -->
+ <script type="text/javascript" src="js/public_chat.js"></script>  
+ <script type="text/javascript" src="js/chat_js.js"></script>  
+  <script type="text/javascript" src="js/send.js"></script>  
+
+<!--//////////////////////////////////////////////////////-->
+
+
+
+    </body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
