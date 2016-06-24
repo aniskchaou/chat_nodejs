@@ -10,12 +10,12 @@
          <link rel="stylesheet" href="Admin/datatables/dataTables.bootstrap.css">
          <link rel="stylesheet" type="text/css" href="css/main.css">
          <link rel="stylesheet" type="text/css" href="css/style_chat.css">
-        <script type="text/javascript" src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+      
         <link rel="icon" type="image/x-icon" href="#" />
     </head>
     <body>
 	<div style="width:100% height:80px; backgroud:#000"></div>
-            
+      <script type="text/javascript" src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>      
     <script src="Admin/bootstrap/js/jQuery-2.1.4.min.js"></script>
     <script src="Admin/bootstrap/js/bootstrap.min.js"></script>
     <script src="Admin/datatables/jquery.dataTables.min.js"></script>
@@ -150,16 +150,33 @@ function connect () {
                  
                 </div>
               </div>
-
+              
               <div class="panel panel-success">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Panel success</h3>
+                  <h3 class="panel-title">Mon camera</h3>
                 </div>
                 <div class="panel-body">
-                  
-
+                   <video autoplay id="sourcevid" height="200" width="250"></video>
+                   <canvas id="output" style="display:none"></canvas>
+                         <div id="log"></div>
+                    <script type="text/javascript" src="js/transmissor.js"></script>     
+                
                 </div>
               </div>
+
+
+               <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">l'autre coté</h3>
+                </div>
+                <div class="panel-body">
+                     <img  id="frame" src=""  height="210" width="250" >
+                     <div id="log"></div>
+                     <div id="logger"></div>
+                   <script type="text/javascript" src="js/receptor.js"></script>
+                </div>
+              </div>
+             
 
 
         </div>
